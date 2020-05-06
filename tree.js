@@ -1,18 +1,18 @@
 function Tree() {
   
-  this.sizeX = 75;
-  this.sizeY = 100;
+  this.sizeX = 40;
+  this.sizeY = 80;
   this.x = width;
-  this.y = height-120;
+  this.y = height-105;
   this.speed = 4;
   
-  /*
   this.hits = function(dino) {
-    if(dino.x+100 == this.x){
-      return true;
+    if(dino.x+dino.sizeX>this.x+25&&dino.x+dino.sizeX<this.x+this.sizeX-10){
+      if(this.y-dino.y<this.sizeY-20){
+        return true;
+      }
     }
   }
-  */
   
   this.update = function() {
     this.x -= this.speed;

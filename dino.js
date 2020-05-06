@@ -14,18 +14,26 @@ class Dino{
     }
   }
   
-  /*
   crouch() {
-    this.sizeX = this.sizeX*1.5;
-    this.sizeY = this.sizeY/2
-    this.y = height-70;
+      this.vy=100;
+      this.sizeX = 150;
+      this.sizeY = 50;
+      this.y = height-80;
   }
-  */
   
+  uncrouch() {
+    this.sizeX=100;
+    this.sizeY=100;
+    this.y = height-120;
+  }
+
   move() {
     this.y += this.vy;
     this.vy += this.gravity;
     this.y = constrain(this.y, 0, height - 120);
+    if(this.sizeY==50){
+      this.y=height-80;
+    }
   }
 
   show() {

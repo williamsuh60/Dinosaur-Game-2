@@ -1,17 +1,17 @@
 let dino;
 let tree;
 let characterIMG;
-let trees = [];
+let obstacles = [];
 
 function preload() {
-  characterIMG = loadImage('New Piskel.png');
+  characterIMG = loadImage('Naruto-PNG-Photo.png');
   treeIMG = loadImage('tree.png');
 }
 
 function setup() {
   createCanvas(600,300);
   dino = new Dino();
-  trees.push(new Tree());
+  obstacle.push(new Tree());
 }
 
 function keyPressed() {
@@ -22,26 +22,36 @@ function keyPressed() {
   }
 }
 
+function keyReleased() {
+  if(keyCode === DOWN_ARROW){
+    dino.uncrouch();
+  }
+}
+
+function obstacleRandomizer() {
+  //Math.floor(Math.random() * 3);
+}
+
 function draw() {
   background(179, 221, 255);
   dino.show();
   dino.move();
   
   if (frameCount % 100 == 0) {
-    trees.push(new Tree());
+    obstacles.push(new Tree());                  //add randomizer here
   }
   
-  collideRectRect(200,200,100,150,mouseX,mouseY,50,75);
-  
-  for(var i=0; i<trees.length; i++){
-    trees[i].show();
-    trees[i].update();
+  for(var i=0; i<obstacles.length; i++){
+    obstacles[i].show();
+    obstacles[i].update();
     
     /*
-    if (trees[i].hits(dino)) {
-      console.log("Ran into tree");
+    if (obstacles[i].hits(dino)) {
+      console.log("Ran Into Tree");
     }
     */
+
+    //console.log("Tree:"+obstacles[i].y +", Dino:" + dino.y);
   }
   
   fill(82, 158, 54);
